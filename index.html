@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f5ef" />
+    <meta name="description" content="A transparent, no-login first-impression audit for your public GitHub profile." />
+    <title>FirstLook — Make your GitHub profile count</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <div class="topbar">
+      <a class="brand" href="#top" aria-label="FirstLook home"><span class="brand-mark">F</span> firstlook<span class="brand-dot">.</span></a>
+      <a class="github-link" href="https://github.com/Udbhav-regadamilli/firstlook" target="_blank" rel="noreferrer">Open source <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <main id="top">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> YOUR GITHUB, AT FIRST GLANCE</p>
+          <h1>Make your work<br />easy to <em>believe in.</em></h1>
+          <p class="hero-sub">A quick, honest audit of the public signals people see when they land on your profile. No account. No AI guesswork. Just useful next steps.</p>
+          <form id="audit-form" class="search-form">
+            <span class="input-prefix">github.com/</span>
+            <label class="sr-only" for="username">GitHub username</label>
+            <input id="username" name="username" placeholder="your-username" autocomplete="off" spellcheck="false" required />
+            <button id="audit-button" type="submit">Audit profile <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="privacy-note"><span aria-hidden="true">◉</span> Public profile data only. Read in your browser, never stored.</p>
+          <p id="notice" class="notice" role="status" aria-live="polite"></p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="profile-card">
+            <div class="card-top"><span class="mini-avatar">FL</span><span class="mono">PROFILE / 01</span><span class="card-check">✓</span></div>
+            <div class="skeleton sk-long"></div><div class="skeleton sk-mid"></div>
+            <div class="card-rule"></div>
+            <div class="mini-project"><span class="project-icon">⌘</span><span><b>project-one</b><small>Clear. Useful. Shipped.</small></span><span class="star">✳ 28</span></div>
+            <div class="mini-project"><span class="project-icon mint">↗</span><span><b>project-two</b><small>README tells the story.</small></span><span class="star">✳ 14</span></div>
+            <div class="score-stamp"><span>FIRST<br />LOOK</span><strong>82</strong><small>/ 100</small></div>
+          </div>
+          <span class="spark spark-a">✳</span><span class="spark spark-b">✦</span><span class="art-caption mono">SIGNAL > NOISE</span>
+        </div>
+      </section>
+
+      <section id="results" class="results wrap" hidden></section>
+
+      <section class="how wrap">
+        <div class="section-heading"><p class="eyebrow">A BETTER FIRST IMPRESSION</p><h2>Small signals.<br /><em>Big difference.</em></h2></div>
+        <div class="how-grid">
+          <article><span class="step">01</span><h3>See what stands out</h3><p>Review the public profile details and up to six visible projects that shape a visitor’s first impression.</p></article>
+          <article><span class="step">02</span><h3>Know why it scored</h3><p>Every point comes from a visible signal: a useful description, a readable README, a license, topics, or recent work.</p></article>
+          <article><span class="step">03</span><h3>Make the next change</h3><p>Get a short, ordered list of practical improvements. Re-run the audit when your profile is ready.</p></article>
+        </div>
+      </section>
+
+      <section class="method wrap">
+        <div><p class="eyebrow">NO BLACK BOX SCORE</p><h2>Transparent<br /><em>by design.</em></h2></div>
+        <div class="method-copy"><p>FirstLook uses GitHub’s public API and a fixed checklist. It does not infer your skill level from language percentages or reward star counts. The score is a portfolio checklist, not a hiring prediction.</p><a href="#scoring">See the scoring rules <span aria-hidden="true">↓</span></a></div>
+      </section>
+
+      <section id="scoring" class="scoring wrap">
+        <div class="score-label"><span class="eyebrow">THE CHECKLIST</span><span class="mono">100 POINTS TOTAL</span></div>
+        <div class="score-row"><span>Profile basics</span><span class="score-track"><i style="--fill:25%"></i></span><b>25</b></div>
+        <div class="score-row"><span>Project descriptions</span><span class="score-track"><i style="--fill:15%"></i></span><b>15</b></div>
+        <div class="score-row"><span>Readable project READMEs</span><span class="score-track"><i style="--fill:18.75%"></i></span><b>18.75</b></div>
+        <div class="score-row"><span>Licenses and topics</span><span class="score-track"><i style="--fill:22.5%"></i></span><b>22.5</b></div>
+        <div class="score-row"><span>Recent project activity</span><span class="score-track"><i style="--fill:11.25%"></i></span><b>11.25</b></div>
+        <div class="score-row"><span>Project links</span><span class="score-track"><i style="--fill:7.5%"></i></span><b>7.5</b></div>
+        <p class="score-footnote">Only public repositories are considered. Forks and archived projects are skipped. Repository stars and language mix do not affect the score.</p>
+      </section>
+
+      <footer class="footer wrap"><a class="brand" href="#top"><span class="brand-mark">F</span> firstlook<span class="brand-dot">.</span></a><span>Made for the work behind the profile.</span><a href="https://github.com/Udbhav-regadamilli/firstlook" target="_blank" rel="noreferrer">Contribute on GitHub ↗</a></footer>
+    </main>
+  </body>
+</html>
