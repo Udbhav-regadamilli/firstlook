@@ -225,3 +225,61 @@ if (requestedUser) {
   usernameInput.value = requestedUser;
   form.requestSubmit();
 }
+
+const THEME_KEY = "firstlook-theme";
+const THEME_COLORS = { light: "#f6f5ef", dark: "#111714" };
+const themeToggle = document.querySelector("#theme-toggle");
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+function getStoredTheme() {
+  try {
+    const value = localStorage.getItem(THEME_KEY);
+    return value === "dark" || value === "light" ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveTheme(theme) {
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    // Ignore storage errors when localStorage is disabled or unavailable
+  }
+}
+
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = theme;
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute("content", THEME_COLORS[theme]);
+  }
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    const label = themeToggle.querySelector(".theme-label");
+    if (label) label.textContent = isDark ? "Light" : "Dark";
+  }
+}
+
+const initialTheme =
+  document.documentElement.dataset.theme === "dark" || document.documentElement.dataset.theme === "light"
+    ? document.documentElement.dataset.theme
+    : getStoredTheme() || (darkMediaQuery.matches ? "dark" : "light");
+
+applyTheme(initialTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    saveTheme(nextTheme);
+    applyTheme(nextTheme);
+  });
+}
+
+darkMediaQuery.addEventListener("change", (event) => {
+  if (!getStoredTheme()) {
+    applyTheme(event.matches ? "dark" : "light");
+  }
+});
